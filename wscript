@@ -478,6 +478,13 @@ FFmpeg/Libav libraries. Git master is recommended."
         'name': '--libavdevice',
         'desc': 'libavdevice',
         'func': check_pkg_config('libavdevice', '>= 57.0.0'),
+    }, {
+        'name': '--drmprime',
+        'deps': 'ffmpeg || libav',
+        'desc': 'DRM Prime ffmpeg support',
+        'func': check_statement('libavutil/pixfmt.h',
+                                'int i = AV_PIX_FMT_DRM_PRIME',
+                                use='libavcodec')
     }
 ]
 
@@ -555,11 +562,6 @@ video_output_features = [
         'desc': 'DRM',
         'deps': 'vt.h',
         'func': check_pkg_config('libdrm'),
-    }, {
-        'name': '--drmprime',
-        'desc': 'DRM Prime ffmpeg support',
-        'func': check_statement('libavutil/pixfmt.h',
-                                'int i = AV_PIX_FMT_DRM_PRIME')
     }, {
         'name': '--gbm',
         'desc': 'GBM',
