@@ -754,3 +754,4 @@ mp.register_event("video-reconfig",
             print_page(curr_page)
         end
     end)
+process_key_binding(false)
